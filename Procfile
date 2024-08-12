@@ -1,1 +1,1 @@
-web: gunicorn Homie.wsgi --log-file -
+web: gunicorn homie.wsgi --log-file -
