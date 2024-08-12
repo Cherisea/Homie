@@ -1,0 +1,1 @@
+web: gunicorn Homie.wsgi --log-file -
