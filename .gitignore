@@ -1,0 +1,2 @@
+# exclude any OS generated files
+.DS_STORE
