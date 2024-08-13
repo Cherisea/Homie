@@ -1,0 +1,157 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homie - Find Your Perfect Home</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-logo">Homie</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'write-review' %}" class="nav-button">Write a Review</a></li>
+                <li><a href="{% url 'login' %}" class="nav-button">Sign Up/Log in</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Home with Homie</h1>
+            <p>Your trusted source for rental reviews and ratings.</p>
+            <form action="{% url 'search' %}" method="POST" class="search-form">
+                {% csrf_token %}
+                <input type="text" name="query" placeholder="Search by street, city or province" required autofocus>
+                <button type="submit">Search</button>
+            </form>
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error-alert">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="categories">
+            <h2>Browse by Category</h2>
+            <div class="category-items">
+                <div class="category-item">
+                    <i class="fas fa-home"></i>
+                    <p>House</p>
+                </div>
+                <div class="category-item">
+                    <i class="fas fa-city"></i>
+                    <p>Basement</p>
+                </div>
+                <div class="category-item">
+                    <i class="fas fa-house-damage"></i>
+                    <p>Townhouse</p>
+                </div>
+                <div class="category-item">
+                    <i class="fas fa-building"></i>
+                    <p>Apartment</p>
+                </div>
+                <div class="category-item">
+                    <i class="fas fa-bed"></i>
+                    <p>Studio</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Why Choose Homie</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Verified Reviews</h3>
+                    <p>All reviews are from verified tenants, ensuring you get honest and reliable feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Comprehensive Listings</h3>
+                    <p>Find detailed information on a wide range of rental properties across various cities.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Driven</h3>
+                    <p>Join a community of renters sharing their experiences to help others find the perfect home.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-reviews">
+            <h2>Recent Reviews</h2>
+            <div class="reviews-list">
+                {% for result in results %}
+                <div class="review-item">
+                    <div class="reviewer-section">
+                        <img src="{{ result.2 }}" alt="Reviewer Avatar">
+                        <div>
+                            <h4>{{ result.0 }}</h4>
+                            <p>{{ result.3 }}</p>
+                        </div>
+                    </div>
+                    <div class="rating-section">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">{{ result.1 }}</p>
+                    <div class="review-pictures">
+                        <img src="{%static 'review1-1.jpg' %}" alt="Review Picture">
+                        <img src="{%static 'review1-2.jpg' %}" alt="Review Picture">
+                    </div>
+                    <div class="review-actions">
+                        <div class="action">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="action">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span>Dislike</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Homie. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Placeholder for future JavaScript code
+        document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('Document is fully loaded and parsed');
+        
+        // Example function to enhance form behavior
+        const searchForm = document.querySelector('.search-form');
+        const searchInput = searchForm.querySelector('input[name="query"]');
+
+        searchForm.addEventListener('submit', (e) => {
+            if (searchInput.value.trim() === '') {
+                e.preventDefault();
+                alert('Please enter a search term.');
+            }
+        });
+
+        // Additional interactive functionality can be added here
+        });
+
+    </script>
+</body>
+</html>

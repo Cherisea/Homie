@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homie - Rental Listing</title>
+    <link rel="stylesheet" href="{% static 'listing.css' %}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-logo">Homie</a>
+            <ul class="nav-links">
+                <li><button class="nav-button" href="login.html">Write a Review</></li>
+                <li><button class="nav-button">Sign Up/Log in</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="listing-header">
+        <h1>Beautiful {{ result.4 }} in {{ result.1 }}</h1>
+        <p class="location">{{ result.2 }}, {{ result.3 }}</p>
+    </header>
+    <main class="listing-main">
+        <section class="listing-gallery">
+            <img src="{% static 'review1-1.jpg' %}" alt="Apartment Image">
+            <img src="{% static 'review2-1.jpg' %}" alt="Apartment Image">
+            <img src="{% static 'review3-1.jpg' %}" alt="Apartment Image">
+        </section>
+
+        <section class="overall-rating">
+            <div class="rating-summary">
+                <h2>Overall Rating</h2>
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>4.5 out of 5</p>
+                <p>(120 reviews)</p>
+            </div>
+            <div class="rating-breakdown">
+                <div class="rating-bar">
+                    <span>5 stars</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 70%;"></div>
+                    </div>
+                    <span>84</span>
+                </div>
+                <div class="rating-bar">
+                    <span>4 stars</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 20%;"></div>
+                    </div>
+                    <span>24</span>
+                </div>
+                <div class="rating-bar">
+                    <span>3 stars</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 5%;"></div>
+                    </div>
+                    <span>6</span>
+                </div>
+                <div class="rating-bar">
+                    <span>2 stars</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 3%;"></div>
+                    </div>
+                    <span>4</span>
+                </div>
+                <div class="rating-bar">
+                    <span>1 star</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 2%;"></div>
+                    </div>
+                    <span>2</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="listing-description">
+            <h2>Description</h2>
+            <p>A stunning apartment located in the heart of downtown. This spacious unit features modern amenities and breathtaking views of the city skyline.</p>
+        </section>
+
+        <section class="listing-reviews">
+            <h2>Reviews</h2>
+            <div class="reviews-list">
+                <div class="review-item">
+                    <div class="reviewer-section">
+                        <img src="{%static 'avatar1.jpg' %}" alt="Reviewer Avatar">
+                        <div>
+                            <h4>John Doe</h4>
+                            <p>New York, NY</p>
+                        </div>
+                    </div>
+                    <div class="rating-section">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p class="review-text">Excellent location and amenities. The apartment was clean and comfortable. Would definitely stay here again!</p>
+                    <div class="review-pictures">
+                        <img src="{%static 'review1-1.jpg' %}" alt="Review Picture">
+                        <img src="{%static 'review1-2.jpg' %}" alt="Review Picture">
+                    </div>
+                    <div class="review-actions">
+                        <div class="action">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="action">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span>Dislike</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <div class="reviewer-section">
+                        <img src="{%static 'avatar3.jpg' %}" alt="Reviewer Avatar">
+                        <div>
+                            <h4>Jane Smith</h4>
+                            <p>Los Angeles, CA</p>
+                        </div>
+                    </div>
+                    <div class="rating-section">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">The apartment exceeded my expectations. Great amenities and friendly neighbors.</p>
+                    <div class="review-pictures">
+                        <img src="{%static 'review3-1.jpg' %}" alt="Review Picture">
+                        <img src="{%static 'review3-2.jpg' %}" alt="Review Picture">
+                    </div>
+                    <div class="review-actions">
+                        <div class="action">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="action">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span>Dislike</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Homie. All rights reserved.</p>
+    </footer>
+</body>
+</html>

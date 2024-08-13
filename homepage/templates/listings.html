@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6HZAreSdS5kIE0ML3SFiurkNKOil72uA&libraries=places&callback=initMap" async defer></script>
+    <title>Homie - Rental Listing</title>
+    <link rel="stylesheet" href="{% static 'result.css' %}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-logo">Homie</a>
+            <ul class="nav-links">
+                <li><button class="nav-button" href="login.html">Write a Review</></li>
+                <li><button class="nav-button">Sign Up/Log in</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="search-results-main">
+        <section class="listing-cards">
+            {% for r in result %}
+            <div class="listing-card">
+                <img src="{% static 'review1-1.jpg' %}" alt="Apartment Image">
+                <h3>Cozy {{ r.4 }} Home</h3>
+                <p>{{ r.0 }} {{ r.1 }}</p>
+                <p>{{ r.2 }}, {{ r.3 }}</p>
+                <p>${{ r.5 }} / month</p>
+            </div>
+            {% endfor %}
+        </section>
+        <section id="map" class="map"></section>
+    </main>
+
+    <script>
+        function initMap() {
+            // Map options
+            var options = {
+                zoom: 13,
+                center: {lat: 39.8283, lng: -98.5795} // Center of the USA
+            }
+            
+            // New map
+            var map = new google.maps.Map(document.getElementById('map'), options);
+            
+            // Get all listing cards
+            var listingCards = document.querySelectorAll('.listing-card');
+
+            // Geocoder
+            var geocoder = new google.maps.Geocoder();
+            
+            // Loop through listing cards
+            listingCards.forEach(function(card) {
+                var addressPart1 = card.querySelector('p:nth-of-type(1)').innerText; 
+                var addressPart2 = card.querySelector('p:nth-of-type(2)').innerText;
+                var address = addressPart1 + ', ' + addressPart2;
+                var title = card.querySelector('h3').innerText;
+                var price = card.querySelector('p:nth-of-type(3)').innerText;
+                var content = '<h3>' + title + '</h3><p>' + price + '</p>';
+                
+                geocodeAddress({address: address, content: content}, geocoder, map);
+            });
+        }
+            
+        // Geocode address
+        function geocodeAddress(addressInfo, geocoder, resultsMap) {
+            geocoder.geocode({'address': addressInfo.address}, function(results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: addressInfo.content
+                    });
+
+                    marker.addListener('click', function() {
+                        infoWindow.open(resultsMap, marker);
+                    });
+                } else {
+                    console.log('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Homie. All rights reserved.</p>
+    </footer>
+</body>
+</html>
