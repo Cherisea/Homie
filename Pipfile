@@ -8,6 +8,7 @@ psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
+python-decouple = "*"
 
 [dev-packages]
 
