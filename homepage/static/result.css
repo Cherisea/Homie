@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: transparent;
+    color: #D2691E;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    font-size: 3em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ff5a5f;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #8B0000;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #D2691E;
+}
+
+.nav-button{
+    background-color: #ff5a5f;
+    font-weight: bold;
+    font-size: medium;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #e14e4e;
+    transform: scale(1.05);
+}
+
+
+.search-results-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 120vh;
+}
+
+.listing-cards {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    height: calc(100vh - 10px);
+    gap: 20px;
+    padding-right: 20px;
+    overflow-y: auto;
+    margin: 20px;
+}
+
+.listing-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 400px;
+}
+
+.listing-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.listing-card h3 {
+    font-size: 1.5em;
+    color: #8B0000;
+    margin: 10px;
+}
+
+.listing-card p {
+    font-size: 1em;
+    color: #555;
+    margin: 10px;
+}
+
+.listing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.map {
+    width: 50%;
+    height: calc(100vh - 10px);  /* Adjust height to exclude nav bar */
+    position: fixed;
+    /* top: 20px; */
+    margin: 20px;
+    right: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: #FF9392;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    margin-top: 40px;
+}

@@ -27,7 +27,7 @@ def home(request):
 def search(request):
     '''
         Function: a request dispatcher that handles search 
-                  by result quantitie
+                  by result quantities
     '''
     if request.method == 'POST':
         query_text = request.POST['query']
