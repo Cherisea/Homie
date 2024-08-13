@@ -9,6 +9,7 @@ gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
 python-decouple = "*"
+pymysql = "*"
 
 [dev-packages]
 
