@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         # replace with your own environment variables
         'NAME': config('DATABASE_NAME'),
-        'HOST': 'd9c88q3e09w6fdb2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         # replace with your own env variables
         'USER': config('DB_USER'),
