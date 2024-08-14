@@ -11,7 +11,7 @@ def home(request):
     with connection.cursor() as cursor:
         cursor.execute(
             """SELECT username, body, profile_pic, DATE(post_time)
-            FROM review JOIN user USING(user_id)
+            FROM "Review" JOIN "User" USING(user_id)
             ORDER BY post_time DESC
             LIMIT 6;"""
         )
