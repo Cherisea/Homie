@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['cahomie-a2247fd5cc12.herokuapp.com',
-                 '127.0.0.1', 'cahomie.rocks']
+                 '127.0.0.1', 'www.cahomie.rocks']
 
 
 # Application definition
