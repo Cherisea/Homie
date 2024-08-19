@@ -56,7 +56,7 @@ def search(request):
 def blob_to_uri(blob_data, mime_type="image/jpg"):
     '''
         Function: A utility function to convert blob data to data uri 
-                  for embedding images in HTML
+                  for directly embedding images in HTML
     '''
     if blob_data is not None:
         encoded_data = base64.b64encode(blob_data).decode('utf-8')
