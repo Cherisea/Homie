@@ -11,7 +11,7 @@ def home(request):
     with connection.cursor() as cursor:
         cursor.execute(
             """SELECT username, body, profile_pic, DATE(post_time)
-            FROM "Review" JOIN "User" USING(user_id)
+            FROM Review JOIN User USING(user_id)
             ORDER BY post_time DESC
             LIMIT 6;"""
         )
@@ -35,7 +35,7 @@ def search(request):
         with connection.cursor() as cursor:
             cursor.execute(
                 """SELECT street_num, street_name, city, province, rental_type, monthly_rent
-                   FROM "Rental"
+                   FROM Rental
                    WHERE TRIM(street_name) = %s OR TRIM(city) = %s OR TRIM(province) = %s""",
                 [query_text, query_text, query_text]
             )
