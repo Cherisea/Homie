@@ -90,24 +90,24 @@ DATABASES = {
     # }
 }
 
-# ================== Heroku DB ====================
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
+# ================== Heroku Postgres DB ====================
+# DATABASES['default'] = dj_database_url.config(
+#     conn_max_age=600, ssl_require=True)
 
-# ================== Local DB ====================
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         # replace with your own environment variables
-#         'NAME': config('DATABASE_NAME'),
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#         # replace with your own env variables
-#         'USER': config('DB_USER'),
-#         # replace with your own env variables
-#         'PASSWORD': config('DB_PWD')
-#     }
-# }
+# ================== MySQL DB ====================
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        # replace with your own environment variables
+        'NAME': config('DATABASE_NAME'),
+        'HOST': 'homie-db-do-user-12055485-0.f.db.ondigitalocean.com',
+        'PORT': '25060',
+        # replace with your own env variables
+        'USER': config('DB_USER'),
+        # replace with your own env variables
+        'PASSWORD': config('DB_PWD')
+    }
+}
 
 
 # Password validation
