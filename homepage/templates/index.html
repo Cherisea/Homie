@@ -94,7 +94,7 @@
                 {% for result in results %}
                 <div class="review-item">
                     <div class="reviewer-section">
-                        <img src="{%static 'avatar1.jpg' %}" alt="Reviewer Avatar">
+                        <img src="{{ result.2 }}" alt="Reviewer Avatar">
                         <div>
                             <h4>{{ result.0 }}</h4>
                             <p>{{ result.3 }}</p>
