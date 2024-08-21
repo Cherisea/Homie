@@ -13,14 +13,14 @@ def home(request):
             """SELECT username, body, profile_pic, DATE(post_time)
             FROM Review JOIN User USING(user_id)
             ORDER BY post_time DESC
-            LIMIT 6;"""
+            LIMIT 3;"""
         )
         result = cursor.fetchall()
         # Convert blob data to data uri for image display in html
-        result_with_uri = list(
-            map(lambda x: (x[0], x[1], blob_to_uri(x[2]), x[3]), result))
+        # result_with_uri = list(
+        #     map(lambda x: (x[0], x[1], blob_to_uri(x[2]), x[3]), result))
 
-    context = {"results": result_with_uri}
+    context = {"results": result}
     return render(request, 'index.html', context)
 
 
@@ -53,12 +53,12 @@ def search(request):
         return render(request, 'listings.html', context)
 
 
-def blob_to_uri(blob_data, mime_type="image/jpg"):
-    '''
-        Function: A utility function to convert blob data to data uri 
-                  for directly embedding images in HTML
-    '''
-    if blob_data is not None:
-        encoded_data = base64.b64encode(blob_data).decode('utf-8')
-        return f"data:{mime_type};base64,{encoded_data}"
-    return None
+# def blob_to_uri(blob_data, mime_type="image/jpg"):
+#     '''
+#         Function: A utility function to convert blob data to data uri
+#                   for directly embedding images in HTML
+#     '''
+#     if blob_data is not None:
+#         encoded_data = base64.b64encode(blob_data).decode('utf-8')
+#         return f"data:{mime_type};base64,{encoded_data}"
+#     return None
