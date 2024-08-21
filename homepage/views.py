@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.db import connection
 from django.contrib import messages
-import base64
 
 
 def home(request):
@@ -15,12 +14,12 @@ def home(request):
             ORDER BY post_time DESC
             LIMIT 3;"""
         )
-        result = cursor.fetchall()
+        review = cursor.fetchall()
         # Convert blob data to data uri for image display in html
         # result_with_uri = list(
         #     map(lambda x: (x[0], x[1], blob_to_uri(x[2]), x[3]), result))
 
-    context = {"results": result}
+    context = {"reviews": review}
     return render(request, 'index.html', context)
 
 

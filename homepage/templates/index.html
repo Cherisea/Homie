@@ -91,13 +91,13 @@
         <section class="recent-reviews">
             <h2>Recent Reviews</h2>
             <div class="reviews-list">
-                {% for result in results %}
+                {% for r in reviews %}
                 <div class="review-item">
                     <div class="reviewer-section">
-                        <img src="{{ result.2 }}" alt="Reviewer Avatar">
+                        <img src="{{ r.2 }}" alt="Reviewer Avatar">
                         <div>
-                            <h4>{{ result.0 }}</h4>
-                            <p>{{ result.3 }}</p>
+                            <h4>{{ r.0 }}</h4>
+                            <p>{{ r.3 }}</p>
                         </div>
                     </div>
                     <div class="rating-section">
@@ -107,10 +107,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="review-text">{{ result.1 }}</p>
+                    <p class="review-text">{{ r.1 }}</p>
                     <div class="review-pictures">
-                        <img src="{%static 'review1-1.jpg' %}" alt="Review Picture">
-                        <img src="{%static 'review1-2.jpg' %}" alt="Review Picture">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/1.jpeg" alt="Review Picture">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/3.jpeg" alt="Review Picture">
                     </div>
                     <div class="review-actions">
                         <div class="action">
