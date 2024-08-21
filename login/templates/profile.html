@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="user-info">
+            <div class="profile-picture">
+                <img src="profile-pic.jpg" alt="User Profile Picture">
+            </div>
+            <h2>John Doe</h2>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Location:</strong> Vancouver, Canada</p>
+            <p><strong>Member since:</strong> January 2021</p>
+            <p><strong>Bio:</strong> Avid traveler and real estate enthusiast. Loves exploring new places and sharing experiences.</p>
+        </div>
+        <div class="user-reviews">
+            <h2>My Reviews</h2>
+            <div class="review">
+                <h3>Beautiful Apartment in Downtown</h3>
+                <p><strong>Date:</strong> June 15, 2023</p>
+                <p><strong>Rating:</strong> 5/5</p>
+                <p>This apartment was fantastic! Clean, spacious, and in a great location. Highly recommend!</p>
+            </div>
+            <div class="review">
+                <h3>Cozy Cottage by the Lake</h3>
+                <p><strong>Date:</strong> April 10, 2023</p>
+                <p><strong>Rating:</strong> 4/5</p>
+                <p>Great experience. The cottage was cozy and had a beautiful view of the lake. Perfect for a weekend getaway.</p>
+            </div>
+            <!-- Additional reviews can be added here -->
+        </div>
+    </div>
+</body>
+</html>
