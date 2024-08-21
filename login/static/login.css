@@ -15,7 +15,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('hero-background.jpg'); /* Ensure this image exists in the correct path */
+    background-image: url('https://homie-assets.nyc3.cdn.digitaloceanspaces.com/hero-background.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.3; /* Adjust the opacity as needed */
