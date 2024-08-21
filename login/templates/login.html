@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h2>Sign in to Homie</h2>
-        <form action="{% url 'auth' %}" method="post">
+        <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
                 <label for="email">Email</label>
