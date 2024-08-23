@@ -1,35 +1,23 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homie - Rental Listing</title>
-    <link rel="stylesheet" href="{% static 'listing.css' %}">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="{% url 'home' %}" class="nav-logo">Homie</a>
-            <ul class="nav-links">
-                <li><button class="nav-button" href="login.html">Write a Review</></li>
-                <li><button class="nav-button">Sign Up/Log in</a></li>
-            </ul>
-        </div>
-    </nav>
+{% block title %} Listing {% endblock title %}
 
+{% block extra_head %}
+{{ block.super  }}
+    <link rel="stylesheet" href="{% static 'listing.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
     <header class="listing-header">
         <h1>Beautiful {{ result.4 }} in {{ result.1 }}</h1>
         <p class="location">{{ result.2 }}, {{ result.3 }}</p>
     </header>
     <main class="listing-main">
         <section class="listing-gallery">
-            <img src="{% static 'review1-1.jpg' %}" alt="Apartment Image">
-            <img src="{% static 'review2-1.jpg' %}" alt="Apartment Image">
-            <img src="{% static 'review3-1.jpg' %}" alt="Apartment Image">
+            <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/3.jpeg" alt="Apartment Image">
+            <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/4.jpeg" alt="Apartment Image">
+            <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/5.jpg" alt="Apartment Image">
         </section>
 
         <section class="overall-rating">
@@ -94,7 +82,7 @@
             <div class="reviews-list">
                 <div class="review-item">
                     <div class="reviewer-section">
-                        <img src="{%static 'avatar1.jpg' %}" alt="Reviewer Avatar">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/user_profile_pic/Ray_pic.jpeg" alt="Reviewer Avatar">
                         <div>
                             <h4>John Doe</h4>
                             <p>New York, NY</p>
@@ -109,8 +97,8 @@
                     </div>
                     <p class="review-text">Excellent location and amenities. The apartment was clean and comfortable. Would definitely stay here again!</p>
                     <div class="review-pictures">
-                        <img src="{%static 'review1-1.jpg' %}" alt="Review Picture">
-                        <img src="{%static 'review1-2.jpg' %}" alt="Review Picture">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/1.jpeg" alt="Review Picture">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/2.jpeg" alt="Review Picture">
                     </div>
                     <div class="review-actions">
                         <div class="action">
@@ -125,7 +113,7 @@
                 </div>
                 <div class="review-item">
                     <div class="reviewer-section">
-                        <img src="{%static 'avatar3.jpg' %}" alt="Reviewer Avatar">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/user_profile_pic/Irving_pic.png" alt="Reviewer Avatar">
                         <div>
                             <h4>Jane Smith</h4>
                             <p>Los Angeles, CA</p>
@@ -140,8 +128,8 @@
                     </div>
                     <p class="review-text">The apartment exceeded my expectations. Great amenities and friendly neighbors.</p>
                     <div class="review-pictures">
-                        <img src="{%static 'review3-1.jpg' %}" alt="Review Picture">
-                        <img src="{%static 'review3-2.jpg' %}" alt="Review Picture">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/6.jpg" alt="Review Picture">
+                        <img src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review_pic/5.jpg" alt="Review Picture">
                     </div>
                     <div class="review-actions">
                         <div class="action">
@@ -157,8 +145,4 @@
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Homie. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% endblock content %}

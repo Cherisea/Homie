@@ -1,26 +1,12 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homie - Find Your Perfect Home</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container">
-            <a href="{% url 'home' %}" class="nav-logo">Homie</a>
-            <ul class="nav-links">
-                <li><a href="{% url 'write_review' %}" class="nav-button">Write a Review</a></li>
-                <li><a href="{% url 'login' %}" class="nav-button">Sign Up/Log in</a></li>
-            </ul>
-        </div>
-    </nav>
+{% block extra_head %} 
+    {{ block.super }} 
+    <link rel="stylesheet" href="{% static 'index.css' %}"> 
+{% endblock extra_head %}
 
+{% block content%}
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
@@ -29,7 +15,7 @@
             <form action="{% url 'search' %}" method="POST" class="search-form">
                 {% csrf_token %}
                 <input type="text" name="query" placeholder="Search by street, city or province" required autofocus>
-                <button type="submit">Search</button>
+                <button type="submit"><i class="fa-regular fa-magnifying-glass"></i></button>
             </form>
             {% if messages %}
                 {% for message in messages %}
@@ -128,11 +114,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Homie. All rights reserved.</p>
-    </footer>
-
     <script>
         // Placeholder for future JavaScript code
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -153,5 +134,4 @@
         });
 
     </script>
-</body>
-</html>
+{% endblock content %}

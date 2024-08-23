@@ -1,1 +1,55 @@
-<h1>Write a Review</h1>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Write a Review {% endblock title %}
+
+{% block extra_head %}
+    {{ block.super }} 
+    <link rel="stylesheet" href="{% static 'write_review.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+    <div class="container">
+        <header>
+            <h1>Find a rental property to review</h1>
+            <p>Share your living experience to make a difference.</p>
+        </header>
+
+        <div class="search-section">
+            <form class="address-search">
+                <div class="search-box">
+                    <input type="text" placeholder="Street Address" id="street">
+                    <div class="divider"></div>
+                    <input type="text" placeholder="City" id="city">
+                    <div class="divider"></div>
+                    <input type="text" placeholder="Province" id="province">
+                    <button type="submit" class="search-button">
+                        <i class="fa-regular fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <img id="review-background" src="https://homie-assets.nyc3.cdn.digitaloceanspaces.com/review-bg.jpg" alt="Be the first to review">
+
+
+        <!-- <div class="rating-section">
+            <label for="rating">Rate your experience:</label><br>
+            <div class="stars">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <textarea placeholder="Write your review here..." id="review-text"></textarea>
+        </div>
+
+        <button id="submit-review">Submit Review</button> -->
+    </div>
+
+    <!-- <script src="write_review.js"></script> -->
+{% endblock content %}

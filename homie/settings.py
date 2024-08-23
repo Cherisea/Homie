@@ -66,7 +66,9 @@ ROOT_URLCONF = 'homie.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -149,7 +151,13 @@ USE_TZ = True
 # add static files for PRODUCTION
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# app-specific static file directory
 STATIC_URL = 'static/'
+
+# general static file directory
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

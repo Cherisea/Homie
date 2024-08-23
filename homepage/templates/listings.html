@@ -1,27 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6HZAreSdS5kIE0ML3SFiurkNKOil72uA&libraries=places&callback=initMap" async defer></script>
-    <title>Homie - Rental Listing</title>
-    <link rel="stylesheet" href="{% static 'result.css' %}">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="{% url 'home' %}" class="nav-logo">Homie</a>
-            <ul class="nav-links">
-                <li><button class="nav-button" href="login.html">Write a Review</></li>
-                <li><button class="nav-button">Sign Up/Log in</a></li>
-            </ul>
-        </div>
-    </nav>
+{% block title %} Listings {% endblock title %}
 
+{% block extra_head %} 
+    {{ block.super }}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6HZAreSdS5kIE0ML3SFiurkNKOil72uA&libraries=places&callback=initMap" async defer></script>
+    <link rel="stylesheet" href="{% static 'listings.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
     <main class="search-results-main">
         <section class="listing-cards">
             {% for r in result %}
@@ -90,9 +78,4 @@
             });
         }
     </script>
-
-    <footer>
-        <p>&copy; 2024 Homie. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% endblock content %}
