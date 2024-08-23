@@ -8,7 +8,7 @@ import time
 
 def login(request):
     '''
-        Function: provides a user login form and process user login requests
+        Function: provides a user login form and process login requests
     '''
     if request.method == 'POST':
         email = request.POST['email']
