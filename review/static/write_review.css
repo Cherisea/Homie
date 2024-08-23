@@ -17,14 +17,6 @@ header h1 {
     text-align: center; 
 }
 
-.search-section input {
-    width: 60%;
-    padding: 15px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 .address-search {
     display: flex;
     margin-top: 10px;
@@ -32,9 +24,10 @@ header h1 {
 
 .search-box {
     display: flex;
-    border: 1px solid #ccc;
+    border: 2px solid;
     border-radius: 4px;
     overflow: hidden;
+    border-color: #ff5a5f;
 }
 
 .search-box input {
