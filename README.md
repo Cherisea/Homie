@@ -16,22 +16,25 @@ the risk of potential scams or being tricked by bad actors.
 # Table of Content
 
 - Features
-- Components
+- Architecture
 
 ## Features
 
-- Search for rental info (historical price, nearby grocery stores, neighbourhood etc.) and reviews by address;
-- Post reviews on rentals as a logged-in user;
-- A clean landing page that enables users to find comprehensive information about a specific rental by address;
-- Individual rental page consists of a section for historical price, grocery markets, neighborhood info and reviews of verified tenants;
-- Users are granted different levels of privileges depending on whether they are authenticated or not. Visitors who haven't signed in are allowed to search for a rental and check related info; while those who signed in could post comments and interact with other users;
-- Historical prices are plotted as histograms by year;
-- Personal reviews posted by previous/current tenants;
-- An overall convenience star diagram that shows which types of tenants this rental is suitable for;
-- Allow replies from verified landlords;
+1. A home page that allows users to search for a rental property by address;
+   - A page that includes details of a rental should be displayed if the search returns only one result
+   - A page featuring a card view of rentals should be rendered if the search returns multiple results
+   - Appropriate flash messages should pop up if the search doesn't return any result
+2. Home page should showcase a cyclical collections of most recent reviews;
+3. A login and register page that includes user verification and password retrieval via emails;
+4. A "Write a Review" page that enables a user to search for a rental he wants to comment on or, in case the rental doesn't exist in the database yet, create a rental listing and be the first commentator;
+   - Any website user could view comments posted by others, but only those who are authenticated are allowed to post comments or interact with
+     other users
+   - A user should provide details of his lease before being allowed to post a review
+5. Rental details consist of a picture gallery, overall rating, historical price, info on nearby grocery markets, reviews of verified tenants and an overall convenience star diagram that shows which types of tenants this rental is most suitable for;
+6. Provide built-in messaging functionality that enables direct communication between authenticated users;
 
-## Components
+## Architecture
 
-- Frontend: React or Angular
+- Frontend: React
 - Backend: Django
 - Database: MySQL
