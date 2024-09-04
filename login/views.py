@@ -45,7 +45,7 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         pwd_hash = make_password(request.POST['password'])
-        pic = request.POST['profilePicture']
+        pic = request.FILES['profilePicture']
 
         with connection.cursor() as cursor:
             cursor.execute(

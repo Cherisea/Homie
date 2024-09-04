@@ -10,6 +10,7 @@ whitenoise = "*"
 django-heroku = "*"
 python-decouple = "*"
 pymysql = "*"
+django-storages = "*"
 
 [dev-packages]
 
