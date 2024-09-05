@@ -32,6 +32,7 @@ the risk of potential scams or being tricked by bad actors.
    - A user should provide details of his lease before being allowed to post a review
 5. Rental details consist of a picture gallery, overall rating, historical price, info on nearby grocery markets, reviews of verified tenants and an overall convenience star diagram that shows which types of tenants this rental is most suitable for;
 6. Provide built-in messaging functionality that enables direct communication between authenticated users;
+7. An "About Us" page that includes three sub-pages: "Our Story", "The Team" and "Contact Us".
 
 ## Architecture
 
