@@ -1,100 +1,158 @@
-import Image from "next/image";
+import React from 'react';
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Home, Building2, Home as TownhouseIcon, Building, BedDouble, Star, Users, ThumbsUp, ThumbsDown } from 'lucide-react'
 
-export default function Home() {
+const categories = [
+  { name: 'House', icon: Home },
+  { name: 'Basement', icon: Building2 },
+  { name: 'Townhouse', icon: TownhouseIcon },
+  { name: 'Apartment', icon: Building },
+  { name: 'Studio', icon: BedDouble },
+];
+
+const whyChooseHomie = [
+  { title: 'Verified Reviews', icon: Star, description: 'All reviews are from verified tenants, ensuring you get honest and reliable feedback.' },
+  { title: 'Comprehensive Listings', icon: Home, description: 'Find detailed information on a wide range of rental properties across various cities.' },
+  { title: 'Community Driven', icon: Users, description: 'Join a community of renters sharing their experiences to help others find the perfect home.' },
+];
+
+const recentReviews = [
+  {
+    name: 'lebron',
+    date: 'Aug. 31, 2023',
+    rating: 4.5,
+    comment: 'Small but cozy, perfect for a short stay.',
+    images: ['/api/placeholder/100/100', '/api/placeholder/100/100']
+  },
+  {
+    name: 'Ray',
+    date: 'Aug. 20, 2023',
+    rating: 4.5,
+    comment: 'The Wi-Fi was slow, but otherwise a good stay.',
+    images: ['/api/placeholder/100/100', '/api/placeholder/100/100']
+  },
+  {
+    name: 'joe',
+    date: 'April 23, 2023',
+    rating: 5,
+    comment: 'Average stay, nothing special.',
+    images: ['/api/placeholder/100/100', '/api/placeholder/100/100']
+  },
+];
+
+const StarRating = ({ rating }) => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="flex">
+      {[...Array(5)].map((_, i) => (
+        <Star key={i} className={`w-4 h-4 ${i < Math.floor(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
+      ))}
+    </div>
+  );
+};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-red-500">Homie</h1>
+          <div>
+            <Button variant="destructive" className="mr-2">Write a Review</Button>
+            <Button variant="destructive">Sign Up/Log In</Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <div className="relative bg-gray-900 h-96">
+        <img src="/api/placeholder/1200/400" alt="Hero background" className="w-full h-full object-cover opacity-50" />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
+          <h2 className="text-4xl font-bold mb-4">Find Your Perfect Home with Homie</h2>
+          <p className="text-xl mb-8">Your trusted source for rental reviews and ratings.</p>
+          <div className="w-full max-w-md">
+            <Input
+              type="text"
+              placeholder="Search by street, city or province"
+              className="w-full px-4 py-2 rounded-md"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Browse by Category */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h3 className="text-2xl font-semibold text-orange-700 mb-6">Browse by Category</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {categories.map((category) => (
+            <Card key={category.name} className="hover:shadow-lg transition-shadow">
+              <CardContent className="flex flex-col items-center justify-center p-4">
+                <category.icon className="w-12 h-12 text-orange-500 mb-2" />
+                <span className="text-sm font-medium">{category.name}</span>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Why Choose Homie */}
+      <div className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-2xl font-semibold text-orange-700 mb-6 text-center">Why Choose Homie</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {whyChooseHomie.map((item) => (
+              <Card key={item.title} className="text-center">
+                <CardContent className="pt-6">
+                  <item.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+                  <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Reviews */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h3 className="text-2xl font-semibold text-orange-700 mb-6">Recent Reviews</h3>
+        <div className="space-y-6">
+          {recentReviews.map((review, index) => (
+            <Card key={index}>
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-2">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
+                  <div>
+                    <h4 className="font-semibold">{review.name}</h4>
+                    <p className="text-sm text-gray-500">{review.date}</p>
+                  </div>
+                  <StarRating rating={review.rating} className="ml-auto" />
+                </div>
+                <p className="mb-4">{review.comment}</p>
+                <div className="flex space-x-2 mb-4">
+                  {review.images.map((img, i) => (
+                    <img key={i} src={img} alt={`Review image ${i + 1}`} className="w-24 h-24 object-cover rounded" />
+                  ))}
+                </div>
+                <div className="flex space-x-4">
+                  <Button variant="outline" size="sm">
+                    <ThumbsUp className="w-4 h-4 mr-2" /> Like
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    <ThumbsDown className="w-4 h-4 mr-2" /> Dislike
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-red-200 py-4 text-center">
+        <p className="text-sm text-gray-600">© 2024 Homie. All rights reserved.</p>
       </footer>
     </div>
   );
