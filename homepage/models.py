@@ -77,7 +77,8 @@ class User(models.Model):
     loc_province = models.CharField(max_length=128, blank=True, null=True)
     joined_at = models.DateTimeField(blank=True, auto_now_add=True)
     bio = models.CharField(max_length=512, blank=True, null=True)
-    profile_pic = models.CharField(max_length=1024)
+    profile_pic = models.ImageField(
+        upload_to="uploads/%Y-%m-%d/", max_length=1024)
 
     class Meta:
         managed = False

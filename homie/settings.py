@@ -163,7 +163,7 @@ STATICFILES_DIRS = [
 ]
 
 # Media files (admin or user uploaded files)
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Migrate local media and static files to Digital Ocean Spaces
 # AWS_ACCESS_KEY_ID = config('ACCESS_KEY')

@@ -12,6 +12,7 @@ python-decouple = "*"
 pymysql = "*"
 django-storages = "*"
 djangorestframework = "*"
+pillow = "*"
 
 [dev-packages]
 
