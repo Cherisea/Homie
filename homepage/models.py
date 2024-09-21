@@ -68,23 +68,6 @@ class Reviewpic(models.Model):
         db_table = 'ReviewPic'
 
 
-class User(models.Model):
-    user_id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=64)
-    email = models.CharField(unique=True, max_length=128)
-    pwd_hash = models.CharField(max_length=256)
-    loc_city = models.CharField(max_length=128, blank=True, null=True)
-    loc_province = models.CharField(max_length=128, blank=True, null=True)
-    joined_at = models.DateTimeField(blank=True, auto_now_add=True)
-    bio = models.CharField(max_length=512, blank=True, null=True)
-    profile_pic = models.ImageField(
-        upload_to="uploads/%Y-%m-%d/", max_length=1024)
-
-    class Meta:
-        managed = False
-        db_table = 'User'
-
-
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 

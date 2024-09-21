@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+# Specify custom User model
+AUTH_USER_MODEL = 'login.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
@@ -164,20 +167,7 @@ STATICFILES_DIRS = [
 
 # Media files (admin or user uploaded files)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Migrate local media and static files to Digital Ocean Spaces
-# AWS_ACCESS_KEY_ID = config('ACCESS_KEY')
-# AWS_SECRET_ACCESS_KEY = config('SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = config('BUCKET_NAME')
-# AWS_S3_ENDPOINT_URL = config('ENDPOINT_URL')
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
-# }
-# AWS_LOCATION = config('AWS_LOCATION')
-
-# MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEIDA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

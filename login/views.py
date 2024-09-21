@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth.hashers import make_password, check_password
-from django.db import connection
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-import time
+from django.contrib.auth import authenticate, login as auth_login
+
+from login.forms import RegisterForm, LoginForm
+from .models import User
 
 
 def login(request):
@@ -11,30 +12,29 @@ def login(request):
         Function: provides a user login form and process login requests
     '''
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
+        obj = User.objects.get(email=request.POST['email'])
+        form = LoginForm(request.POST, instance=obj)
+        print("POST request received.")
+        print("Form data:", request.POST)
 
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """SELECT email, pwd_hash
-                FROM User
-                WHERE email = %s""",
-                [email]
-            )
-            result = cursor.fetchone()
-
-        if result is None:
-            messages.error(
-                request, "Can't find an account associated with this email.")
-            return render(request, "login.html")
-        elif check_password(password, result[1]):
-            request.session['email'] = email
-            return render(request, "profile.html")
+        if form.is_valid():
+            email = form.cleaned_data["email"]
+            password = form.cleaned_data["password"]
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return render(request, "profile.html")
+            else:
+                form.add_error(None, "Incorrect email or password")
         else:
-            messages.error(request, "Incorrect password or email.")
-            return render(request, "login.html")
+            print("Form is not valid.")
+            print("Form errors:", form.errors)
 
-    return render(request, "login.html")
+    else:
+        form = LoginForm()
+
+    context = {"form": form}
+    return render(request, "login.html", context)
 
 
 def register(request):
@@ -42,20 +42,21 @@ def register(request):
         Function: register a new user
     '''
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        pwd_hash = make_password(request.POST['password'])
-        pic = request.FILES['profilePicture']
+        # create a bound form from submitted data
+        form = RegisterForm(request.POST, request.FILES)
+        if form.is_valid():
+            # stop short of saving data to database
+            new_user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            new_user.save()
 
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """INSERT INTO User (username, email, pwd_hash, profile_pic)
-                   VALUES (%s, %s, %s, %s)
-                """, [username, email, pwd_hash, pic]
-            )
-        messages.success(
-            request, "Account created successfully. Redirecting to login page in 5 seconds ...")
-        time.sleep(5)
-        return HttpResponseRedirect('/login/')
+            messages.success(request, f"Your account has been created \
+                             {username}! Redirecting to login page.")
+            return HttpResponseRedirect('/login/')
 
-    return render(request, 'register.html')
+    else:
+        # otherwise, create an empty, unbound form
+        form = RegisterForm()
+
+    context = {'form': form}
+    return render(request, 'register.html', context)

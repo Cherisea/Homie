@@ -14,17 +14,20 @@
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label for="email">Email*</label>
-                <input type="email" id="email" name="email" required autofocus>
+                {{ form.email.label_tag }}
+                {{ form.email }}
             </div>
             <div class="form-group">
-                <label for="password">Password*</label>
-                <input type="password" id="password" name="password" required>
+                {{ form.password.label_tag }}
+                {{ form.password }}
             </div>
-            {% if messages %}
-                {% for message in messages %}
-                    <p class="error-alert">{{ message }}</p>
-                {% endfor %}
+            
+            {% if form.non_field_errors %}
+                <div class="error-alert">
+                    {% for err in form.non_field_errors %}
+                        <p>{{ err }}</p>
+                    {% endfor %}
+                </div>
             {% endif %}
             <button type="submit" class="btn">Log in</button>
         </form>
