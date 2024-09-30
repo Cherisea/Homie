@@ -12,23 +12,18 @@ def login(request):
         Function: provides a user login form and process login requests
     '''
     if request.method == 'POST':
-        obj = User.objects.get(email=request.POST['email'])
-        form = LoginForm(request.POST, instance=obj)
-        print("POST request received.")
-        print("Form data:", request.POST)
+        form = LoginForm(data=request.POST)
 
         if form.is_valid():
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password"]
-            user = authenticate(request, email=email, password=password)
+            email = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(request, username=email, password=password)
+
             if user is not None:
                 auth_login(request, user)
                 return render(request, "profile.html")
             else:
                 form.add_error(None, "Incorrect email or password")
-        else:
-            print("Form is not valid.")
-            print("Form errors:", form.errors)
 
     else:
         form = LoginForm()
@@ -48,6 +43,9 @@ def register(request):
             # stop short of saving data to database
             new_user = form.save(commit=False)
             username = form.cleaned_data['username']
+            password = form.cleaned_data.get('password')
+
+            new_user.set_password(password)
             new_user.save()
 
             messages.success(request, f"Your account has been created \
