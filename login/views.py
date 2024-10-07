@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login as auth_login
-
 from login.forms import RegisterForm, LoginForm
 from .models import User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import UserSerializer
 
 
 def login(request):
@@ -58,3 +60,11 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'register.html', context)
+
+
+# create a view function for returning all users as a REST API response
+@api_view(['GET'])
+def getUsers(request):
+    items = User.objects.all()
+    serializer = UserSerializer(items, many=True)
+    return Response(serializer.data)
